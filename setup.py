@@ -20,8 +20,8 @@ try:
         .decode("utf-8")
         .strip()
     )
-except Exception:
-    version = "0.dev" + datetime.datetime.now().strftime("%Y%m%d%H%M")
+except subprocess.CalledProcessError:
+    version = "0.dev" + datetime.datetime.now().strftime("%Y%m%d%H")
 
 setup(
     name="django-import-export-celery",
