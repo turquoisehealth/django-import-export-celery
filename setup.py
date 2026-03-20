@@ -2,7 +2,6 @@ import codecs
 import os
 from setuptools import setup, find_packages
 import subprocess
-import datetime
 
 here = os.path.abspath(os.path.dirname(__file__))
 
@@ -21,7 +20,7 @@ try:
         .strip()
     )
 except Exception:
-    version = "0.dev" + datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+    version = "0.dev"
 
 setup(
     name="django-import-export-celery",
