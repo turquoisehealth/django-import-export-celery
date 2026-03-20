@@ -20,7 +20,7 @@ try:
         .decode("utf-8")
         .strip()
     )
-except subprocess.CalledProcessError:
+except Exception:
     version = "0.dev" + datetime.datetime.now().strftime("%Y%m%d%H%M%S")
 
 setup(

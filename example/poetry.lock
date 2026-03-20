@@ -330,7 +330,7 @@ yaml = ["tablib[yaml]"]
 
 [[package]]
 name = "django-import-export-celery"
-version = "0.dev20260320102825"
+version = "0.dev20260320103319"
 description = "Process long running django imports and exports in celery"
 optional = false
 python-versions = "*"
