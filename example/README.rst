@@ -1,74 +1,45 @@
 Install
 =======
 
-Launch docker-compose
-
-.. code-block:: bash
-
-   docker-compose up
-
-Attach to docker-compose
-
-.. code-block:: bash
-
-   docker attach djangoimportexportcelery_web
-
-Install Django dependencies:
+Install Python dependencies:
 
 .. code-block:: bash
 
     cd example
-    pipenv install
-    pipenv shell
+    poetry install
 
 Initialize database tables:
 
 .. code-block:: bash
 
-    python manage.py migrate
+    poetry run python manage.py migrate
 
 Create a super-user for the admin:
 
 .. code-block:: bash
 
-    python manage.py createsuperuser
-
-Restart docker-compose
-
-.. code-block:: bash
-
-   docker-compose down
+    poetry run python manage.py createsuperuser
 
 
 Run
 ===
 
-Launch docker-compose
+Start Redis (required for Celery):
 
 .. code-block:: bash
 
-   docker-compose up
+    redis-server --daemonize yes
 
-Attach to docker-compose
-
-.. code-block:: bash
-
-   docker attach djangoimportexportcelery_web
-
-Enter pipenv shell:
+Start the Celery worker:
 
 .. code-block:: bash
 
-    cd example
-    pipenv shell
+    poetry run celery -A project.celery worker -l info
 
-
-Actually run the server
+Start the Django development server:
 
 .. code-block:: bash
 
-    python manage.py runserver 0.0.0.0:8000
+    poetry run python manage.py runserver
 
-The example app will be available from http://127.0.0.1:8001/admin
-
-Note: parts of this example app were taken from the [djano-leaflet](https://github.com/makinacorpus/django-leaflet/tree/master/example) example app.
+The example app will be available at http://127.0.0.1:8000/admin

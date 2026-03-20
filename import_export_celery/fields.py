@@ -15,8 +15,8 @@ def lazy_initialize_storage_class():
         storage_class = storages[storage_alias]
     else:
         # Use old style storages if defined
-        from django.core.files.storage import get_storage_class
-        storage_class = get_storage_class(getattr(settings, "IMPORT_EXPORT_CELERY_STORAGE", "django.core.files.storage.FileSystemStorage"))
+        from django.utils.module_loading import import_string
+        storage_class = import_string(getattr(settings, "IMPORT_EXPORT_CELERY_STORAGE", "django.core.files.storage.FileSystemStorage"))
         return storage_class()
 
     return storage_class

@@ -79,24 +79,12 @@ REDIS_URL = os.environ.get("REDIS_URL", "redis://redis")
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-if os.environ.get("DATABASE_TYPE") == "sqlite":
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.environ.get("DATABASE_NAME", os.path.join(BASE_DIR, "db.sqlite3")),
-        }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.environ.get("DATABASE_NAME", os.path.join(BASE_DIR, "db.sqlite3")),
     }
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql_psycopg2",
-            "NAME": os.environ.get("DATABASE_NAME", "pguser"),
-            "USER": os.environ.get("DATABASE_USER", "pguser"),
-            "PASSWORD": os.environ.get("DATABASE_PASSWORD", "foobar"),
-            "HOST": os.environ.get("DATABASE_HOST", "postgres"),
-            "PORT": os.environ.get("DATABASE_PORT", ""),
-        },
-    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -126,13 +114,13 @@ TIME_ZONE = "UTC"
 
 USE_I18N = True
 
-USE_L10N = True
-
 USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
