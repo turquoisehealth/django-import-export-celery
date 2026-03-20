@@ -23,8 +23,6 @@ logger = logging.getLogger(__name__)
 
 @with_author
 class ImportJob(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    
     file = ImportExportFileField(
         verbose_name=_("File to be imported"),
         upload_to="django-import-export-celery-import-jobs",

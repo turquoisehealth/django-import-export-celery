@@ -19,8 +19,6 @@ from ..utils import get_formats, get_export_job_email_on_completion
 
 @with_author
 class ExportJob(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._content_type = None
