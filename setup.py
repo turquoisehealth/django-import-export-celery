@@ -7,7 +7,7 @@ import datetime
 here = os.path.abspath(os.path.dirname(__file__))
 
 requires = [
-    "Django>=5.2",
+    "Django>=4.2",
     "django-import-export>=4.4.0",
     "django-author>=1.2.0",
     "html2text>=2020.1.16",
